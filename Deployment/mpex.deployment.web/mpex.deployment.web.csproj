@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD592A61-B1E9-49B0-9313-538CA22DA5DE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>mpex.deployment.web</RootNamespace>
+    <AssemblyName>mpex.deployment.web</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Administration, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\System32\inetsrv\Microsoft.Web.Administration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\calender\core\locales-all.js" />
+    <Content Include="Content\calender\core\locales-all.min.js" />
+    <Content Include="Content\calender\core\locales\af.js" />
+    <Content Include="Content\calender\core\locales\ar-dz.js" />
+    <Content Include="Content\calender\core\locales\ar-kw.js" />
+    <Content Include="Content\calender\core\locales\ar-ly.js" />
+    <Content Include="Content\calender\core\locales\ar-ma.js" />
+    <Content Include="Content\calender\core\locales\ar-sa.js" />
+    <Content Include="Content\calender\core\locales\ar-tn.js" />
+    <Content Include="Content\calender\core\locales\ar.js" />
+    <Content Include="Content\calender\core\locales\bg.js" />
+    <Content Include="Content\calender\core\locales\bs.js" />
+    <Content Include="Content\calender\core\locales\ca.js" />
+    <Content Include="Content\calender\core\locales\cs.js" />
+    <Content Include="Content\calender\core\locales\da.js" />
+    <Content Include="Content\calender\core\locales\de.js" />
+    <Content Include="Content\calender\core\locales\el.js" />
+    <Content Include="Content\calender\core\locales\en-au.js" />
+    <Content Include="Content\calender\core\locales\en-gb.js" />
+    <Content Include="Content\calender\core\locales\en-nz.js" />
+    <Content Include="Content\calender\core\locales\es-us.js" />
+    <Content Include="Content\calender\core\locales\es.js" />
+    <Content Include="Content\calender\core\locales\et.js" />
+    <Content Include="Content\calender\core\locales\eu.js" />
+    <Content Include="Content\calender\core\locales\fa.js" />
+    <Content Include="Content\calender\core\locales\fi.js" />
+    <Content Include="Content\calender\core\locales\fr-ca.js" />
+    <Content Include="Content\calender\core\locales\fr-ch.js" />
+    <Content Include="Content\calender\core\locales\fr.js" />
+    <Content Include="Content\calender\core\locales\gl.js" />
+    <Content Include="Content\calender\core\locales\he.js" />
+    <Content Include="Content\calender\core\locales\hi.js" />
+    <Content Include="Content\calender\core\locales\hr.js" />
+    <Content Include="Content\calender\core\locales\hu.js" />
+    <Content Include="Content\calender\core\locales\id.js" />
+    <Content Include="Content\calender\core\locales\is.js" />
+    <Content Include="Content\calender\core\locales\it.js" />
+    <Content Include="Content\calender\core\locales\ja.js" />
+    <Content Include="Content\calender\core\locales\ka.js" />
+    <Content Include="Content\calender\core\locales\kk.js" />
+    <Content Include="Content\calender\core\locales\ko.js" />
+    <Content Include="Content\calender\core\locales\lb.js" />
+    <Content Include="Content\calender\core\locales\lt.js" />
+    <Content Include="Content\calender\core\locales\lv.js" />
+    <Content Include="Content\calender\core\locales\mk.js" />
+    <Content Include="Content\calender\core\locales\ms.js" />
+    <Content Include="Content\calender\core\locales\nb.js" />
+    <Content Include="Content\calender\core\locales\nl.js" />
+    <Content Include="Content\calender\core\locales\nn.js" />
+    <Content Include="Content\calender\core\locales\pl.js" />
+    <Content Include="Content\calender\core\locales\pt-br.js" />
+    <Content Include="Content\calender\core\locales\pt.js" />
+    <Content Include="Content\calender\core\locales\ro.js" />
+    <Content Include="Content\calender\core\locales\ru.js" />
+    <Content Include="Content\calender\core\locales\sk.js" />
+    <Content Include="Content\calender\core\locales\sl.js" />
+    <Content Include="Content\calender\core\locales\sq.js" />
+    <Content Include="Content\calender\core\locales\sr-cyrl.js" />
+    <Content Include="Content\calender\core\locales\sr.js" />
+    <Content Include="Content\calender\core\locales\sv.js" />
+    <Content Include="Content\calender\core\locales\th.js" />
+    <Content Include="Content\calender\core\locales\tr.js" />
+    <Content Include="Content\calender\core\locales\uk.js" />
+    <Content Include="Content\calender\core\locales\vi.js" />
+    <Content Include="Content\calender\core\locales\zh-cn.js" />
+    <Content Include="Content\calender\core\locales\zh-tw.js" />
+    <Content Include="Content\calender\core\main.css" />
+    <Content Include="Content\calender\core\main.js" />
+    <Content Include="Content\calender\core\main.min.css" />
+    <Content Include="Content\calender\core\main.min.js" />
+    <Content Include="Content\calender\daygrid\main.css" />
+    <Content Include="Content\calender\daygrid\main.js" />
+    <Content Include="Content\calender\daygrid\main.min.css" />
+    <Content Include="Content\calender\daygrid\main.min.js" />
+    <Content Include="Content\calender\interaction\main.js" />
+    <Content Include="Content\calender\interaction\main.min.js" />
+    <Content Include="Content\calender\timegrid\main.css" />
+    <Content Include="Content\calender\timegrid\main.js" />
+    <Content Include="Content\calender\timegrid\main.min.css" />
+    <Content Include="Content\calender\timegrid\main.min.js" />
+    <Content Include="Content\dashboard.css" />
+    <Content Include="Content\dp.png" />
+    <Content Include="Content\File folder.gif" />
+    <Content Include="Content\file tr.gif" />
+    <Content Include="Content\calender\daygrid.main.min.css" />
+    <Content Include="Scripts\calender\daygrid.main.min.js" />
+    <Content Include="Content\calender\main.css" />
+    <Content Include="Scripts\calender\main.js" />
+    <Content Include="Scripts\dashboard.js" />
+    <Content Include="Scripts\feather-icons.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.d.ts" />
+    <Content Include="Scripts\jquery-3.0.0.js" />
+    <Content Include="Scripts\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Shared\_MasterLayout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DataBaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IISController.cs" />
+    <Compile Include="Controllers\IISSingleFileController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="CustomValidationAttribute\IsValidAppPoolAttributes.cs" />
+    <Compile Include="CustomValidationAttribute\IsValidDatabaseAttribute.cs" />
+    <Compile Include="CustomValidationAttribute\IsValidFileLocationAttributes.cs" />
+    <Compile Include="Filters\ServerSelectFilter.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Calender.cs" />
+    <Compile Include="Models\MultiFileDeployment.cs" />
+    <Compile Include="Models\SafeFilesAndFolders.cs" />
+    <Compile Include="Models\ScriptFile.cs" />
+    <Compile Include="Models\Server.cs" />
+    <Compile Include="Models\SingleFileDeployment.cs" />
+    <Compile Include="Models\SQLExceptionErrorLog.cs" />
+    <Compile Include="Services\ApplicationDbContext.cs" />
+    <Compile Include="Models\ClientInformation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppPool.cs" />
+    <Compile Include="Services\FileTransfer.cs" />
+    <Compile Include="Services\MultiFilesAndFolders.cs" />
+    <Compile Include="Services\ScriptDBContext.cs" />
+    <Compile Include="Services\ScriptUpdate.cs" />
+    <Compile Include="Services\SingleFileTransfer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Client\Delete.cshtml" />
+    <Content Include="Views\Client\Details.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Reports\DataBase.cshtml" />
+    <Content Include="Views\Reports\ErrorsOnScriptFile.cshtml" />
+    <Content Include="Views\Reports\IIS.cshtml" />
+    <Content Include="Views\IIS\ClientList.cshtml" />
+    <Content Include="Views\IIS\EditorTemplates\ClientInformation.cshtml" />
+    <Content Include="Views\IIS\Process.cshtml" />
+    <Content Include="Views\IIS\SafeFile.cshtml" />
+    <Content Include="Views\IIS\SafeFilesAndFolders.cshtml" />
+    <Content Include="Views\IIS\SafeFolder.cshtml" />
+    <Content Include="Views\IIS\ViewSafeFile.cshtml" />
+    <Content Include="Views\IIS\ViewSafeFolder.cshtml" />
+    <Content Include="Views\DataBase\ClientList.cshtml" />
+    <Content Include="Views\DataBase\EditorTemplates\ClientInformation.cshtml" />
+    <Content Include="Views\DataBase\Process.cshtml" />
+    <Content Include="Views\DataBase\SourceFile.cshtml" />
+    <Content Include="Views\IISSingleFile\ClientList.cshtml" />
+    <Content Include="Views\IISSingleFile\SourceFileLocation.cshtml" />
+    <Content Include="Views\IISSingleFile\Process.cshtml" />
+    <Content Include="Views\IISSingleFile\EditorTemplates\ClientInformation.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52764</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52764/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

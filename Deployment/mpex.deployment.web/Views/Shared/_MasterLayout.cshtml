@@ -1,0 +1,167 @@
+﻿@{
+    List<string> ServerList = new List<string>();
+    Int32 ActiveServer = 0;
+    if (Session["Server"] != null)
+    {
+        ActiveServer = ((mpex.deployment.web.Models.Server)Session["Server"]).ServerId; ;
+    }
+
+    ServerList = @System.Web.Configuration.WebConfigurationManager.AppSettings["servers"].ToString().Split(',').ToList();
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DevOps</title>
+
+    <!-- Bootstrap CSS -->
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/site")
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function ()
+        {
+            $("#ServerSelect").on("change", function (s, e)
+            {
+                var e = document.getElementById("ServerSelect");
+                var intServerId = e.options[e.selectedIndex].value;
+                var strServerName = e.options[e.selectedIndex].name;
+                var Objmodel = { ServerId: intServerId, ServerName: strServerName };
+                console.log(Objmodel);
+                $.ajax({
+                    url: "@Url.Action("SaveSession", "Dashboard")",
+                    dataType: "json",
+                    data: JSON.stringify(Objmodel),
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (d)
+                    {
+                        location.reload();
+                    },
+                    error: function () { alert("Server Error"); }
+                });
+
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block  sidebar " style="background-color: #354052;">
+                <div class="sidebar-sticky">
+                    <ul class="nav  flex-column">
+
+                        <li class="nav-item" style="    padding-bottom: 10%">
+                            <select class="form-control" style="width: 140px; position: relative; left: 22px; border-radius: .2rem; " id="ServerSelect" name="Servers">
+                                @foreach (var item in ServerList)
+                                {
+                                    if (ActiveServer == Convert.ToInt32( item.Split(';')[1]))
+                                    {
+                                <option value="@item.Split(';')[1]" selected="selected">@item.Split(';')[0]</option>
+                                    }
+                                    else
+                                    {
+                                <option value="@item.Split(';')[1]">@item.Split(';')[0]</option>
+                                    }
+                                }
+                            </select>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="@Url.Action("Index", "Dashboard")">
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Client")">
+                                <span data-feather="users"></span>
+                                Customers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a href="#forms" data-toggle="collapse" class="nav-link collapsed">
+                                <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Reports</span>
+                            </a>
+                            <ul id="forms" class="sidebar-dropdown list-unstyled collapse ">
+
+                                <li class="nav-item" style="padding-left: 20%;">
+                                    <a class="nav-link" href="@Url.Action("DataBase", "Reports")">
+                                        <span data-feather="file-text"></span>
+                                        Databse
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="padding-left: 20%;">
+                                    <a class="nav-link" href="@Url.Action("IIS", "Reports")">
+                                        <span data-feather="file-text"></span>
+                                        IIS
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("ClientList", "DataBase")">
+                                <span data-feather="database"></span>
+                                DataBase
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#IISforms" data-toggle="collapse" class=" nav-link nav-link collapsed">
+                                <span data-feather="layers"></span>
+                                IIS
+                            </a>
+                            <ul id="IISforms" class="sidebar-dropdown list-unstyled collapse ">
+
+                                <li class="nav-item" style="padding-left: 20%;">
+                                    <a class="nav-link" href="@Url.Action("ClientList", "IIS")">
+                                        <span data-feather="file-text"></span>
+                                        Multi Files
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="padding-left: 20%;">
+                                    <a class="nav-link" href="@Url.Action("ClientList", "IISSingleFile")">
+                                        <span data-feather="file-text"></span>
+                                        Single File
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+                <div class="container-fluid p-0">
+                    @RenderBody()
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/feather")
+    @Scripts.Render("~/bundles/site")
+
+    <script>
+        feather.replace()
+    </script>
+</body>
+</html>
